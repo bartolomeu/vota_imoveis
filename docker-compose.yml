@@ -14,8 +14,8 @@ services:
     build: ./back
     ports:
       - '3001:3001'
-    # expose:
-    #   - '4000'
+    expose:
+      - '4001'
     depends_on:
       - mysqldb
   front:
