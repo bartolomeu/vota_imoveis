@@ -1,0 +1,31 @@
+services:
+  mysqldb:
+    image: mysql:8.0.28
+    volumes:
+      - mysql-bd:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: 'vota-imoveis'
+      MYSQL_ROOT_PASSWORD: 'pass123'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+  back:
+    build: ./back
+    ports:
+      - '3001:3001'
+    # expose:
+    #   - '4000'
+    depends_on:
+      - mysqldb
+  front:
+    build: ./front
+    ports:
+      - '3000:3000'
+    expose:
+      - '3000'
+    depends_on:
+      - back
+
+volumes:
+  mysql-bd:
