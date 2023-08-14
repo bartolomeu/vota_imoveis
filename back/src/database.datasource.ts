@@ -9,4 +9,5 @@ export default new DataSource({
   password: 'pass123',
   database: 'vota-imoveis',
   entities: [process.cwd() + '/src/**/*.entity{.ts,.js}'],
+  migrations: [process.cwd() + '/migrations/*.ts'],
 });
